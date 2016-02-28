@@ -2,6 +2,13 @@
 
 EBooks est un site de e-commerce de livres.
 
+### Creation de la Base de Donnee
+
+```sh
+$ app/console doctrine:database:create
+$ app/console doctrine:schema:update --force
+```
+
 ### Installation
 
 ```sh
