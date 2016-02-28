@@ -119,7 +119,7 @@ class EbookController extends Controller
     public function livraisonAction()
     {
         $form = $this->createForm(CommandeType::class);
-        var_dump($this->getDoctrine()->getManager()->getRepository('AppBundle:Commande')->find(10)->getProduits()->toArray());
+
         return $this->render('ebook/produit/livraison.html.twig', array('form' => $form->createView()));
     }
 
@@ -147,7 +147,7 @@ class EbookController extends Controller
 
             $produits =  $session->get('panier');
             $produits = $em->getRepository('AppBundle:Produits')->findById($produits);
-            var_dump(count($produits));
+
             foreach ($produits as $key => $produit) {
                 $commande->addProduit($produit);
             }
