@@ -78,6 +78,7 @@ class Commande
 
     public function __construct() {
         $this->produits = new ArrayCollection();
+        $this->payer = false;
     }
 
     /**
