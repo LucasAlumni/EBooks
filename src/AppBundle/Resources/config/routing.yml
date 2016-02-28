@@ -1,0 +1,34 @@
+ebook_list:
+    path: /
+    defaults: { _controller: AppBundle:Ebook:index }
+
+ebook_produit:
+    path: /produit/{id}
+    defaults: { _controller: AppBundle:Ebook:produit }
+
+ebook_panier:
+    path: /panier
+    defaults: { _controller: AppBundle:Ebook:panier }
+
+ebook_livraison:
+    path: /panier/livraison
+    defaults: { _controller: AppBundle:Ebook:livraison }
+    methods: [GET]
+
+ebook_validation:
+    path: /panier/validation
+    defaults: { _controller: AppBundle:Ebook:validation }
+
+
+ebook_ajouter:
+    path: /panier/ajouter/{id}
+    defaults: { _controller: AppBundle:Ebook:ajouter }
+
+ebook_supprimer:
+    path: /panier/supprimer/{id}
+    defaults: { _controller: AppBundle:Ebook:supprimer }
+
+ebook_post_livraison:
+    path: /panier/livraison
+    defaults: { _controller: AppBundle:Ebook:postLivraison }
+    methods:  [POST]

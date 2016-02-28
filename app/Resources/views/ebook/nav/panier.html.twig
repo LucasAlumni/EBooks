@@ -1,0 +1,19 @@
+<p class="lead">Mon panier</p>
+<div class="well">
+    <div class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            {% if articles|length == 0 %}
+                Aucun article
+            {% elseif articles == 1 %}
+                1 article 
+            {% else %}
+                {{ articles }} articles
+            {% endif %}
+            <b class="caret"></b></a>
+        </a>
+        <div class="dropdown-menu well" role="menu" aria-labelledby="dLabel">
+            <a href="{{ path('ebook_panier') }}" class="btn btn-primary">Mon Panier</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {{ render(controller('AppBundle:Ebook:menu')) }}
+            </div>
+            <div class="col-md-9">
+
+                <div class="row">
+                {% for produit in produits %}
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/300x300" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">{{ produit.prix|tva(produit.tva.multiplicate) }}€</h4>
+                                <h4 style="color: #3498db;">{{ produit.nom }}</h4>
+                                <a href="{{ path('ebook_produit', { 'id' : produit.id }) }}" class="btn btn-primary">Plus d'info</a>
+                                {% if panier[produit.id] is not defined %}
+                                    <a href="{{ path('ebook_ajouter', { 'id' : produit.id }) }}" class="btn btn-success">Ajouter au panier</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

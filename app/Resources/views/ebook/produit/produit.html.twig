@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
+                {{ render(controller('AppBundle:Ebook:menu')) }}
+            </div>
+
+            <div class="col-md-9">
+
+                <div class="row">
+					<div class="col-sm-5 col-lg-5 col-md-5">
+						<img src="http://placehold.it/300x300" alt="" width="300" height="300">
+					</div>
+
+					<div class="col-sm-6 col-lg-6 col-md-6">
+						<h4>{{ produit.nom }}</h4>
+						<h5 style="color: #2ecc71;">Il reste plus que 3 livre !</h5>
+						<p>{{ produit.description }}</p>
+						<h4>{{ produit.prix|tva(produit.tva.multiplicate) }}€ TTC, <i style="color:#95a5a6; font-size: 12px;">Hors Taxe : {{ produit.prix }}€ </i></h4>
+						{% if panier[produit.id] is not defined %}
+						<form action="{{ path('ebook_ajouter', { 'id' : produit.id }) }}" method="get">
+							<select name="qte" class="">
+								{% for i in 1..10 %}
+									<option value="{{ i }}">{{ i }}</option>
+								{% endfor %}
+							</select>
+							<hr>
+							<div>
+							    <button class="btn btn-primary">Ajouter au panier</button>
+							</div>
+						</form>
+						{% else %}
+							<a href="{{ path('ebook_panier') }}" class="btn btn-primary">Le produit est déjà dans le panier</a>
+						{% endif %}
+						
+					</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+				
+
+
+	
